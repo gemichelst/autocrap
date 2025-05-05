@@ -260,6 +260,42 @@ since the device sends the high and low bits with different control numbers, the
 
 note that when using the MIDI interface, this value is currently reduced to 7 bits to fit in a CC message. with OSC, no such reduction happens.
 
+
+###### `Notes & Velocity`
+
+```
+{
+  "name": "DrumPad1",
+  "ctrl_in_num": 90,
+  "ctrl_out_num": 90,
+  "ctrl_kind": { "OnOff": { "mode": "Momentary" } },
+  "midi": {
+    "channel": 9,        // MIDI Channel 10 (0-indexed)
+    "kind": "NoteOnOff",
+    "num": 36,           // Kick Drum note number
+    "velocity": 100      // Specify desired velocity (0-127)
+  }
+},
+{
+  "name": "TriggerNoteFixed",
+  "ctrl_in_num": 91,
+  "ctrl_kind": { "OnOff": { "mode": "Momentary" } },
+  "midi": {
+    "channel": 0,
+    "kind": "NoteOnOff",
+    "num": 60
+    // Velocity omitted, will use default (127)
+  }
+}
+```
+
+adds midi note support to on/off (momentary)
+
+`num` specifies the note number which will be sent for example 60 (will result in C4)
+
+
+
+
 ##### `midi`
 
 specifies the MIDI message corresponding to the control.
